@@ -1,5 +1,5 @@
 # Use the httpd-parent image as base
-FROM localhost/httpd-parent
+FROM quay.io/redhattraining/httpd-parent
 
 LABEL io.k8s.description="Put wahtever description here you want" \
       io.k8s.display-name="Apache HTTP server"
