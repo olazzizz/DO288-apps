@@ -1,0 +1,76 @@
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    fabric8.io/git-commit: d3b6fa27b03665eae8915137a621fbb516be84f4
+    fabric8.io/git-branch: todo-migrate
+    fabric8.io/git-url: https://github.com/olazzizz/DO288-apps.git
+  labels:
+    app: todo-api
+    provider: fabric8
+    version: 1.0.0-SNAPSHOT
+    group: com.redhat.training.example
+  name: todo-api
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    app: todo-api
+    provider: fabric8
+    group: com.redhat.training.example
+  strategy:
+    rollingParams:
+      timeoutSeconds: 3600
+    type: Rolling
+  template:
+    metadata:
+      annotations:
+        fabric8.io/git-commit: d3b6fa27b03665eae8915137a621fbb516be84f4
+        fabric8.io/git-branch: todo-migrate
+        fabric8.io/git-url: https://github.com/olazzizz/DO288-apps.git
+      labels:
+        app: todo-api
+        provider: fabric8
+        version: 1.0.0-SNAPSHOT
+        group: com.redhat.training.example
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: DATABASE_USER
+          value: todoapp
+        - name: DATABASE_PASSWORD
+          value: redhat123
+        - name: DATABASE_SVC_HOSTNAME
+          value: tododb
+        - name: DATABASE_NAME
+          value: todo
+        image: todo-api:latest
+        imagePullPolicy: IfNotPresent
+        name: thorntail-v2
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        - containerPort: 9779
+          name: prometheus
+          protocol: TCP
+        - containerPort: 8778
+          name: jolokia
+          protocol: TCP
+        securityContext:
+          privileged: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - thorntail-v2
+      from:
+        kind: ImageStreamTag
+        name: todo-api:latest
+    type: ImageChange
