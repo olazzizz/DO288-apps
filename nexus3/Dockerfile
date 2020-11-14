@@ -71,7 +71,11 @@ RUN yum install -y --disableplugin=subscription-manager hostname procps \
 VOLUME ${NEXUS_DATA}
 
 EXPOSE 8081
-USER nexus
+
+RUN chgrp -R 0 ${SONATYPE_DIR} ${NEXUS_DATA} \
+    && chmod -R g=u ${SONATYPE_DIR} ${NEXUS_DATA}
+
+USER 1001
 
 ENV INSTALL4J_ADD_VM_PARAMS="-Xms1200m -Xmx1200m -XX:MaxDirectMemorySize=2g -Djava.util.prefs.userRoot=${NEXUS_DATA}/javaprefs"
 
