@@ -8,8 +8,8 @@
         "source": {
             "type": "Git",
             "git": {
-                "uri": "https://github.com/youruser/DO288-apps",
-                "ref": "review-cicd"
+                "uri": "https://github.com/olazzizz/DO288-apps",
+                "ref": "onofrio-movies"
             },
             "contextDir": "movies"
         },
