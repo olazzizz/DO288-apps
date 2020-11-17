@@ -83,7 +83,7 @@ pipeline {
                     }
                 }
                 sh '''
-                       oc new-app --as-deployment-config --name ${APP_NAME} -i ${APP_NAME}:latest -n ${DEV_PROJECT}
+                       oc new-app  --name ${APP_NAME} -i ${APP_NAME}:latest -n ${DEV_PROJECT}
                        oc expose svc ${APP_NAME} -n ${DEV_PROJECT}
                    '''
             }
@@ -129,7 +129,7 @@ pipeline {
                 echo '### Creating a new app in Staging ###'
                 sh '''
                         oc project ${STAGE_PROJECT}
-                        oc new-app --as-deployment-config --name ${APP_NAME} -i ${APP_NAME}:latest
+                        oc new-app --name ${APP_NAME} -i ${APP_NAME}:latest
                         oc expose svc ${APP_NAME}
                    '''
             }
