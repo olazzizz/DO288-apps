@@ -15,7 +15,7 @@ pipeline {
         DEV_PROJECT = "labs-dev"
         STAGE_PROJECT = "labs-stage"
         APP_GIT_URL = "https://github.com/olazzizz/DO288-apps"
-        NEXUS_SERVER = "http://nexus-server.eu45.prod.nextcle.com/repository/java"
+        NEXUS_SERVER = "http://nexus-common.apps.eu45.prod.nextcle.com/repository/java"
 
         // DO NOT CHANGE THE GLOBAL VARS BELOW THIS LINE
         APP_NAME = "movies"
