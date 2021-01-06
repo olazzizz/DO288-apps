@@ -2,8 +2,8 @@
 
 echo "START OF CUSTOMIZATION PART - S2I	"
 
-mkdir -p  ~/tmp/s2i
-cd ~/tmp/s2i
+mkdir -p  ~/tmp/cust-scripts
+cd ~/tmp/cust-scripts
 wget https://github.com/olazzizz/DO288-apps/releases/download/v1/job-def.json
 wget https://github.com/olazzizz/DO288-apps/releases/download/v1/post-commit-script.sh
 
