@@ -2,7 +2,7 @@
 
 echo "START OF CUSTOMIZATION PART - S2I	"
 
-SCRIPTDIR=~/tmp/cust-scripts
+SCRIPTDIR=/tmp/cust-scripts
 
 mkdir -p  $SCRIPTDIR
 
