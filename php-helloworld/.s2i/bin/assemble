@@ -75,7 +75,7 @@ echo "; Set error reporting level (for development - be careful in production)" 
 echo "error_reporting = E_ALL" >> $CUSTOM_PHP_INI
 echo "display_errors = On" >> $CUSTOM_PHP_INI
 
-cp $CUSTOM_PHP_INI /usr/local/etc/php/php.ini
+cp $CUSTOM_PHP_INI /etc/php.ini
 echo "Customization ends here"
 
 if [ "${PHP_CLEAR_ENV:-ON}" == "OFF" ]; then
